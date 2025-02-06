@@ -1,0 +1,14 @@
+import requests
+from bs4 import BeautifulSoup
+
+city = input("Enter city name: ")
+url = f"https://www.google.com/search?q=weather+{city}"
+headers = {"User-Agent": "Mozilla/5.0"}
+response = requests.get(url, headers=headers)
+soup = BeautifulSoup(response.text, "html.parser")
+
+temp = soup.find("span", {"id": "wob_tm"})
+if temp:
+    print(f"Temperature in {city}: {temp.text}°C")
+else:
+    print("Could not retrieve weather data.")
