@@ -1,0 +1,19 @@
+
+tasks = {}
+
+while True:
+    action = input("Choose: add/view/delete/exit: ").lower()
+    
+    if action == "add":
+        task = input("Enter task: ")
+        tasks[len(tasks) + 1] = task
+    elif action == "view":
+        for num, task in tasks.items():
+            print(f"{num}. {task}")
+    elif action == "delete":
+        task_num = int(input("Enter task number to delete: "))
+        tasks.pop(task_num, None)
+    elif action == "exit":
+        break
+    else:
+        print("Invalid choice")
